@@ -11,11 +11,12 @@ const Header = () => (
             <NavLink to="/">BOOKS</NavLink>
           </li>
           <li>
-            <NavLink to="/categories">CATEGORIES</NavLink>
+            <NavLink style={{ color: 'rgba(5, 20, 20, 0.5)' }} to="/categories">CATEGORIES</NavLink>
           </li>
         </ul>
       </nav>
     </div>
   </header>
 );
+
 export default Header;
