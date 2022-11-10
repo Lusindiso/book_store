@@ -1,15 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import books from './books/books';
+import categories from './categories/categories';
 
-const categories = createSlice({
-	name: 'category',
-	initialState: { category: '' },
-	reducers: {
-		checkStatus(state) {
-			// eslint-disable-next-line no-param-reassign
-			state.category = 'Under construction';
-		},
-	},
+const store = configureStore({
+  reducer: {
+    books: books.reducer,
+    categories: categories.reducer,
+  },
 });
-export const categoriesActions = categories.actions;
 
-export default categories;
+export default store;
