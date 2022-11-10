@@ -1,31 +1,28 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { booksActions } from '../../redux/books/books';
+import { addBook } from '../../redux/books/books';
 import classes from './AddBook.module.css';
 
 const AddBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-
   const titleChangeHandler = (e) => {
     setTitle(e.target.value);
   };
-
   const authorChangeHandler = (e) => {
     setAuthor(e.target.value);
   };
-
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
     if (title.length > 2 && author.length > 2) {
-      dispatch(
-        booksActions.addBook({
-          id: Math.random().toString(),
-          title,
-          author,
-        }),
-      );
+      const newBook = {
+        id: Math.random().toString(),
+        title,
+        author,
+        category: 'Action',
+      };
+      dispatch(addBook(newBook));
       setTitle('');
       setAuthor('');
     }
@@ -51,4 +48,5 @@ const AddBook = () => {
     </div>
   );
 };
+
 export default AddBook;
