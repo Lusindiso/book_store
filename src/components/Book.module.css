@@ -1,9 +1,5 @@
 .book {
   background: white;
-  border-radius: 5px;
-  border: 1px solid #e8e8e8;
-  margin: 25px 0;
-  padding: 15px 15px;
 }
 
 .book h3 {
@@ -31,4 +27,55 @@
   font-weight: bold;
   margin-top: 5px;
   text-transform: capitalize;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  padding: 15px 15px;
+  margin: 25px 0;
+}
+
+.right {
+  margin-right: -6vw;
+}
+
+.right > div {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.right > div > div:first-child {
+  width: 7rem;
+}
+
+.right > div > div:nth-child(2) > p {
+  font-size: 2rem;
+}
+
+.chapter {
+  border-left: 1px solid rgb(163, 163, 163);
+  padding-left: 2rem;
+}
+
+.chapter > h3 {
+  opacity: 0.5;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.chapter > button {
+  margin-top: 1rem;
+  padding: 8px 20px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background: #0290ff;
+  font-size: 1.2rem;
 }
