@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import classes from './Header.module.css';
+import avatar from '../../assets/user.png';
 
 const Header = () => (
   <header className={classes.header}>
@@ -11,11 +12,16 @@ const Header = () => (
             <NavLink to="/">BOOKS</NavLink>
           </li>
           <li>
-            <NavLink to="/categories">CATEGORIES</NavLink>
+            <NavLink style={{ color: 'rgba(5, 20, 20, 0.5)' }} to="/categories">CATEGORIES</NavLink>
           </li>
         </ul>
       </nav>
     </div>
+    <div>
+      <img className={classes.avatar} src={avatar} alt="avatar" />
+
+    </div>
   </header>
 );
+
 export default Header;
