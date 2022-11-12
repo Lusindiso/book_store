@@ -4,6 +4,10 @@
   margin-top: 20px;
 }
 
+.addbook >h2 {
+  opacity: 0.5;
+}
+
 .addbook form {
   display: flex;
   justify-content: space-between;
