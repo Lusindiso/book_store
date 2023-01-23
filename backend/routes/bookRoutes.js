@@ -5,13 +5,14 @@ const {
   updateBooks,
   deleteBooks,
 } = require("../controllers/bookController");
+const { protect } = require("../middleware/authMiddleware");
 
 router.get("/", getBooks);
 
-router.post("/", setBooks);
+router.post("/", protect, setBooks);
 
-router.put("/:id", updateBooks);
+router.put("/:id", protect, updateBooks);
 
-router.delete("/:id", deleteBooks);
+router.delete("/:id", protect, deleteBooks);
 
 module.exports = router;

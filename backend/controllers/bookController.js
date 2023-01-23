@@ -1,5 +1,7 @@
-const Book = require("../models/bookModel");
 const asyncHanlder = require("express-async-handler");
+
+const Book = require("../models/bookModel");
+const User = require("../models/userModel");
 
 // @desc    Get books
 // @route   Get api/books
@@ -19,6 +21,7 @@ exports.setBooks = asyncHanlder(async (req, res) => {
     title,
     author,
     category,
+    user: req.user.id,
   });
 
   res.status(201).json(book);
@@ -32,6 +35,18 @@ exports.updateBooks = asyncHanlder(async (req, res) => {
   if (!book) {
     res.status(400);
     throw new Error("Book not found!");
+  }
+
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  if (book.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not found");
   }
 
   const updateBook = await Book.findByIdAndUpdate(req.params.id, req.body, {
@@ -49,6 +64,19 @@ exports.deleteBooks = asyncHanlder(async (req, res) => {
     res.status(400);
     throw new Error("Book not found!");
   }
+
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  if (book.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
   await book.remove();
   res.status(200).json({ id: req.params.id });
 });
