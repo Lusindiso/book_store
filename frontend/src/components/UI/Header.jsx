@@ -1,6 +1,7 @@
-import { NavLink } from 'react-router-dom';
-import classes from './Header.module.css';
-import avatar from '../../assets/user.png';
+import { NavLink } from "react-router-dom";
+import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import classes from "./Header.module.css";
+import avatar from "../../assets/user.png";
 
 const Header = () => (
   <header className={classes.header}>
@@ -12,14 +13,20 @@ const Header = () => (
             <NavLink to="/">BOOKS</NavLink>
           </li>
           <li>
-            <NavLink style={{ color: 'rgba(5, 20, 20, 0.5)' }} to="/categories">CATEGORIES</NavLink>
+            <NavLink style={{ color: "rgba(5, 20, 20, 0.5)" }} to="/categories">
+              CATEGORIES
+            </NavLink>
           </li>
         </ul>
       </nav>
     </div>
     <div>
-      <img className={classes.avatar} src={avatar} alt="avatar" />
-
+      <NavLink to="/login">
+        <FaSignInAlt /> Login
+      </NavLink>
+      <NavLink to="/register">
+        <FaUser /> Register
+      </NavLink>
     </div>
   </header>
 );
